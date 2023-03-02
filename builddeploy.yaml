@@ -1,0 +1,47 @@
+apiVersion: "cicd.innkeeper.run/v1alpha1"
+kind: BuildDeploy
+metadata:
+  name: example-nginx
+  namespace: mcbans
+spec:
+  build:
+    dockerfile: ./Dockerfile
+    workdir: ./
+  git:
+    uri: git@github.com:InnKeeperDevOps/example-nginx.git
+    secret: github-ssh
+  publish:
+    secret: git-repo
+    host: ghcr.io
+    tag: innkeeperdevops/example-nginx
+    version: latest
+  ingress:
+    - name: nginx-public
+      domain: pubtest.mcbans.com
+      path: /
+      gateway:
+        - internet
+      port: 8080
+  deploy:
+    namespace: mcbans
+    name: example-nginx
+    handleContainer: 0
+    deployment:
+      metadata:
+        labels:
+          app: example-nginx
+      spec:
+        replicas: 2
+        selector:
+          matchLabels:
+            app: example-nginx
+        template:
+          metadata:
+            labels:
+              app: example-nginx
+          spec:
+            containers:
+              - name: example-nginx
+                image: nginx
+                ports:
+                  - containerPort: 8080
