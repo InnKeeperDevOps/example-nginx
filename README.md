@@ -9,3 +9,7 @@
   * Add ssh key in github
   * Install ssh secret in git-builder namespace
   * Install git token for writing to github docker repository
+
+```
+kubectl apply -f https://raw.githubusercontent.com/InnKeeperDevOps/example-nginx/main/builddeploy.yaml
+```
