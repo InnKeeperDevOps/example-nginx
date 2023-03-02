@@ -21,7 +21,7 @@ spec:
       path: /
       gateway:
         - internet
-      port: 8080
+      port: 80
   deploy:
     namespace: mcbans
     name: example-nginx
@@ -44,4 +44,4 @@ spec:
               - name: example-nginx
                 image: nginx
                 ports:
-                  - containerPort: 8080
+                  - containerPort: 80
