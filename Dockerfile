@@ -1,1 +1,1 @@
-FROM nginx:latest
+FROM docker.io/nginx:latest
