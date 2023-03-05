@@ -17,7 +17,7 @@ spec:
     version: latest
   ingress:
     - name: nginx-public
-      domain: pubtest.mcbans.com
+      domain: example.innkeeper.run
       path: /
       gateway:
         - internet
