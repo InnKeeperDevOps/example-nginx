@@ -1,0 +1,1 @@
+kubectl -n git-builder create secret generic git-repo --from-literal=server=ghcr.io --from-literal=username=<github_username> --from-literal=password=<github_token> --from-literal=email=<github_email>
