@@ -2,7 +2,7 @@ apiVersion: "cicd.innkeeper.run/v1alpha1"
 kind: BuildDeploy
 metadata:
   name: example-nginx
-  namespace: mcbans
+  namespace: innkeeper
 spec:
   build:
     dockerfile: ./Dockerfile
@@ -22,7 +22,7 @@ spec:
         - internet
       port: 80
   deploy:
-    namespace: mcbans
+    namespace: innkeeper
     name: example-nginx
     handleContainer: 0
     deployment:
